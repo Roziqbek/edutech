@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% block head %}
+    <title>About us</title>
+    {% endblock head %}
+    <!-- font awesome cdn link  -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+    />
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  </head>
+  <body>
+    {% block content %}
+    <section class="about">
+      <div class="row">
+        <div class="image">
+          <img src="{% static 'images/PR11.webp' %}" alt="" />
+        </div>
+        <div class="content">
+          <h3>EduTech</h3>
+          <p>
+            Ushbu online platforma , o'rnatilgan tizimlar faniga qiziquvhi
+            yoshlar uchun kerakli video darslar o'quv qo'llanmalar bilan
+            boyitilgan.Bu dastur o'zaro foydalanuvchilar uchun o'zaro muloqotni
+            yo'lga qo'ygan holda rivojlanishga qaratilgan
+          </p>
+          <a href="{% url 'courses' %}" class="inline-btn">bizning darslar</a>
+        </div>
+      </div>
+
+      <div class="box-container">
+        <div class="box">
+          <i class="fas fa-graduation-cap"></i>
+          <div>
+            <h3>+{{courses_count}}</h3>
+            <p>online darslar</p>
+          </div>
+        </div>
+
+        <div class="box">
+          <i class="fas fa-user-graduate"></i>
+          <div>
+            <h3>+{{user_count}}</h3>
+            <p>o'quvchi</p>
+          </div>
+        </div>
+
+        <div class="box">
+          <i class="fas fa-chalkboard-user"></i>
+          <div>
+            <h3>+2</h3>
+            <p>expert o'qituvchilar</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    {% endblock content %}
+    <!-- custom js file link  -->
+    <script src="{% static 'js/script.js' %}"></script>
+  </body>
+</html>

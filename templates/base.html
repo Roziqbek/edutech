@@ -1,0 +1,107 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"/>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  {% block head %}
+  <title>Document</title>
+  {% endblock head %}
+</head>
+{% if user.username %}
+<body>
+  <header class="header">
+    <section class="flex">
+      <a href="{% url 'about' %}" class="logo">EduTech</a>
+
+      <form action="search.html" method="post" class="search-form">
+        <input
+          type="text"
+          name="search_box"
+          required
+          placeholder="search courses..."
+          maxlength="100"
+        />
+        <button type="submit" class="fas fa-search"></button>
+      </form>
+
+      <div class="icons">
+        <div id="menu-btn" class="fas fa-bars"></div>
+        <div id="search-btn" class="fas fa-search"></div>
+        <div id="user-btn" class="fas fa-user"></div>
+        <div id="toggle-btn" class="fas fa-sun"></div>
+      </div>
+
+      <div class="profile">
+        <img src="/static/images/user-solid.svg" class="image" alt="" />
+        <h3 class="name">{{user.username}}</h3>
+        <p class="role">student</p>
+        <a href="{% url 'profile' request.user.id %}" class="btn">view profile</a>
+        <div class="flex-btn">
+          <a href="{% url 'logout' %}" class="option-btn">Log Out</a>
+        </div>
+      </div>
+    </section>
+  </header>
+
+  <div class="side-bar">
+    <div id="close-btn">
+      <i class="fas fa-times"></i>
+    </div>
+
+    <div class="profile">
+      <img src="/static/images/user-solid.svg" class="image" alt="" />
+      <h3 class="name">{{user.username}}</h3>
+      <p class="role">student</p>
+      <a href="{% url 'profile' request.user.id %}" class="btn">view profile</a>
+    </div>
+
+    <nav class="navbar">
+      <a href="{% url 'about' %}"
+        ><i class="fas fa-home"></i><span>Bosh sahifa</span></a
+      >
+      <a href="{% url 'courses' %}"
+        ><i class="fas fa-graduation-cap"></i><span>Bizning kurslar</span></a
+      >
+      <a href="{% url 'index' %}"
+      ><i class="fa-solid fa-book"></i><span>Bizning Testlar</span></a
+    >
+      <a href="{% url 'contact' %}"
+        ><i class="fas fa-headset"></i><span>Aloqa</span></a
+      >
+    </nav>
+  </div>
+
+  {% else %}
+  <body class="active">
+    <header class="header">
+      <section class="flex">
+        <a href="{% url 'about' %}" class="logo">EduTech</a>
+        <form action="search.html" method="post" class="search-form">
+          <input
+            type="text"
+            name="search_box"
+            required
+            placeholder="search courses..."
+            maxlength="100"
+          />
+          <button type="submit" class="fas fa-search"></button>
+        </form>
+        <div class="icons">
+          <a style="display: inline;" href="{% url 'signup' %}" class="option-btn">Sign up</a>
+          <a style="display: inline;" href="{% url 'login' %}" class="option-btn">Login</a>
+          <div id="toggle-btn" class="fas fa-sun"></div>
+        </div>
+      </section>
+    </header>
+{% endif %}
+
+{% block content %}
+
+{% endblock content %}
+<script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% block head %}
+    <title>Video Playlist</title>
+    {% endblock head %}
+  </head>
+  <body>
+    {% block content %}
+    <section class="playlist-details">
+      <h1 class="heading">playlist details</h1>
+
+      <div class="row">
+        <div class="column">
+          <div class="thumb">
+            <img src="/static/images/thumb-1.png" alt="" />
+            <span>{{video_count}} videos</span>
+          </div>
+        </div>
+        <div class="column">
+          <div class="tutor">
+            <img src="/static/images/pic-1.jpg" alt="" />
+            <div>
+              <h3>Muslimbek</h3>
+              <span>21-05-2023</span>
+            </div>
+          </div>
+
+          <div class="details">
+            <h3>O'rnatilgan tizimlar</h3>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum
+              minus reiciendis, error sunt veritatis exercitationem deserunt
+              velit doloribus itaque voluptate.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="playlist-videos">
+      <h1 class="heading">Video darslar</h1>
+      <div class="box-container">
+        {% for i in video_dars %}
+        <a class="box" href="{% url 'watch_video' i.caption %}">
+          <i class="fas fa-play"></i>
+          <img src="{{i.img.url}}" alt="" />
+          <h3>{{i.caption}}</h3>
+        </a>
+        {% endfor %}
+      </div>
+    </section>
+    {% endblock content %}
+  </body>
+</html>

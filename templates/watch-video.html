@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% block head %}
+    <title>Watch</title>
+    {% endblock head %}
+  </head>
+  <body>
+    {% block content %}
+    <section class="watch-video">
+      <div class="video-container">
+        <div class="video">
+          <video
+            src="{{denamic.video.url}}"
+            controls
+            poster="{{denamic.img.url}}"
+            id="video"
+          ></video>
+        </div>
+        <h3 class="title">{{denamic.caption}}</h3>
+        <div class="info">
+          <p class="date">
+            <i class="fas fa-calendar"></i><span>{{denamic.date|timesince}} ago</span>
+          </p>
+        </div>
+        <div class="tutor">
+          <img src="/static/images/pic-1.jpg" alt="" />
+          <div>
+            <h3>{{denamic.teacher}}</h3>
+            <span>teacher</span>
+          </div>
+        </div>
+        <form action="" method="post" class="flex">
+          <a href="{{denamic}}" class="inline-btn">Video darslar</a>
+          <a href="{{denamic.doc.url}}" class="inline-btn" download>download word</a>
+        </form>
+      </div>
+    </section>
+    {% endblock content %}
+  </body>
+</html>

@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% block head %}
+    <title>Check Test</title>
+    {% endblock head %}
+  </head>
+  <body>
+    {% block content %}
+    <div class="content mt-3">
+      <center>
+        {% if checktest.user_passed %}
+        <h1>You have successfully passed the Test</h1>
+        {% else %}
+        <h1>
+          You Faild! You have to solove {{checktest.test.pass_percentage}}% of
+          test least
+        </h1>
+        {% endif %}
+
+        <h2 class="mb-4">
+          You finded {{checktest.percentage}} % of all questions
+        </h2>
+      </center>
+      <div class="card p-3">
+        {% for q in checktest.checkquestion_set.all %}
+        <h5>{{forloop.counter}}. {{q.question}}</h5>
+        {% if q.is_true %}
+        <div class="answers p-2">
+          <p>Note: {{q.given_answer}} was marked</p>
+          <p>A. {{q.question.a}}</p>
+          <p>B. {{q.question.b}}</p>
+          <p>C. {{q.question.c}}</p>
+          <p>D. {{q.question.d}}</p>
+        </div>
+        {% else %}
+        <div style="background-color: coral" class="answers p-2">
+          <p>Note: {{q.given_answer}} was marked</p>
+          <p>A. {{q.question.a}}</p>
+          <p>B. {{q.question.b}}</p>
+          <p>C. {{q.question.c}}</p>
+          <p>D. {{q.question.d}}</p>
+        </div>
+        {% endif %} {% endfor %}
+        <a href="{% url 'index' %}" class="btn btn-secondary mt-2">Back Home</a>
+      </div>
+    </div>
+    {% endblock content %}
+  </body>
+</html>

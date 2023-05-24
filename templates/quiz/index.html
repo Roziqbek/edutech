@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+  <title>Test Page</title>
+{% endblock head %}
+
+{% block content %}
+  <div class="content mt-3">
+    <h3>Latest Tests for You</h3>
+    <ol>
+      {% for test in tests %}
+      <li>{{test.title}} | <small><a href="{% url 'ready_to_test' test.id %}">Try It</a></small></li>
+      {% endfor %}
+    </ol>
+  </div>
+{% endblock content %}

@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% block head %}
+    <title>Courses</title>
+    {% endblock head %}
+  </head>
+  <body>
+    {% block content %}
+    <section class="courses">
+      <h1 class="heading">Bizning kurslar</h1>
+
+      <div class="box-container">
+        <div class="box">
+          <div class="tutor">
+            <img src="/static/images/pic-1.jpg" alt="" />
+            <div class="info">
+              <h3>Muslimbek</h3>
+              <span>21-05-2023</span>
+            </div>
+          </div>
+          <div class="thumb">
+            <img src="/static/images/thumb-1.png" alt="" />
+            <span>{{video_count}} videos</span>
+          </div>
+          <h3 class="title">O'rnatilgan tizimlar</h3>
+          <a href="{% url 'playlist' %}" class="inline-btn">Boshlash</a>
+        </div>
+        <div class="box">
+          <div class="tutor">
+            <img src="/static/images/pic-1.jpg" alt="" />
+            <div class="info">
+              <h3>Muslimbek</h3>
+              <span>21-05-2023</span>
+            </div>
+          </div>
+          <div class="thumb">
+            <img src="/static/images/thumb-2.png" alt="" />
+            <span>6 videos</span>
+          </div>
+          <h3 class="title">O'rnatilgan tizimlar</h3>
+          <a href="{% url 'playlist' %}" class="inline-btn">Boshlash</a>
+        </div>
+        <div class="box">
+          <div class="tutor">
+            <img src="/static/images/pic-1.jpg" alt="" />
+            <div class="info">
+              <h3>Muslimbek</h3>
+              <span>21-05-2023</span>
+            </div>
+          </div>
+          <div class="thumb">
+            <img src="/static/images/thumb-3.png" alt="" />
+            <span>6 videos</span>
+          </div>
+          <h3 class="title">O'rnatilgan tizimlar</h3>
+          <a href="{% url 'playlist' %}" class="inline-btn">Boshlash</a>
+        </div>
+      </div>
+    </section>
+    {% endblock content %}
+  </body>
+</html>

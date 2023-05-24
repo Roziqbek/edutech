@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% block head %}
+    <title>Login</title>
+    {% endblock head %}
+  </head>
+  <body>
+    {% block content %}
+    <section class="form-container">
+      <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h3>login now</h3>
+        <p>your name <span>*</span></p>
+        <input
+          type="name"
+          name="login_name"
+          placeholder="enter your name"
+          required
+          maxlength="50"
+          class="box"
+        />
+        <p>your password <span>*</span></p>
+        <input
+          type="password"
+          name="login_pass"
+          placeholder="enter your password"
+          required
+          maxlength="20"
+          class="box"
+        />
+        <input type="submit" value="login new" name="submit" class="btn" />
+      </form>
+    </section>
+    {% endblock content %}
+  </body>
+</html>
